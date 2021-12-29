@@ -18,8 +18,8 @@ namespace DependencyInjection
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _dependencyArray[0].Write($"Worker running at: {DateTimeOffset.Now}");
-                _dependencyArray[1].Write($"Worker running at: {DateTimeOffset.Now}");
+                _dependencyArray[0].Write($"dependency array[0] => Worker running at: {DateTimeOffset.Now}");
+                _dependencyArray[1].Write($"dependency array[1] => Worker running at: {DateTimeOffset.Now}");
                 await Task.Delay(1000, stoppingToken);
             }
 
