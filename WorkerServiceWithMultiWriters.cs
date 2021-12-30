@@ -9,7 +9,7 @@ namespace DependencyInjection
 
         public WorkerServiceWithMultiWriters(IEnumerable<IMessageWriter> messageWriters)
         {
-            var dependencyArray = messageWriters.ToArray();
+            _dependencyArray = messageWriters.ToArray();
             Trace.Assert(_dependencyArray[0] is ConsoleMessageWriter);
             Trace.Assert(_dependencyArray[1] is LoggingMessageWriter);
         }

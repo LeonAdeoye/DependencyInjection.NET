@@ -2,6 +2,6 @@
 {
     public class ConsoleMessageWriter : IMessageWriter
     {
-        public void Write(string message) => Console.WriteLine($"MessageWriter.Write(message: \"{message}\")");
+        public void Write(string message) => Console.WriteLine($"ConsoleMessageWriter.Write(message: \"{message}\")");
     }
 }

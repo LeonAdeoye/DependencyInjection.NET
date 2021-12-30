@@ -21,7 +21,8 @@ Console.WriteLine("Creating Worker Service...");
 
 using var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((_, services) =>
-        services.AddHostedService<WorkerService>()
+        //services.AddHostedService<WorkerService>()
+        services.AddHostedService<WorkerServiceWithMultiWriters>()
             .AddScoped<IMessageWriter, ConsoleMessageWriter>() // Register multiple service instances of the4 same service type.
             .AddScoped<IMessageWriter, LoggingMessageWriter>()
             .AddTransient<ITransientOperation, DefaultOperation>() // Transient operations are always different, a new instance is created with every retrieval of the service.
@@ -44,9 +45,7 @@ static void ExemplifyScoping(IServiceProvider services, string scope)
     logger = provider.GetRequiredService<OperationLogger>();
     logger.LogOperations($"{scope}-Call 1 . GetRequiredService<OperationLogger>()");
     Console.WriteLine();
-
 }
-
 ExemplifyScoping(host.Services, "Scope 1");
 ExemplifyScoping(host.Services, "Scope 2");
 await host.RunAsync();
