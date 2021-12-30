@@ -12,7 +12,7 @@ namespace DependencyInjection
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _messageWriter.Write($"Worker running at: {DateTimeOffset.Now}");
+                _messageWriter.Write($"Worker Service running at: {DateTimeOffset.Now}");
                 await Task.Delay(1000, stoppingToken);
             }
 

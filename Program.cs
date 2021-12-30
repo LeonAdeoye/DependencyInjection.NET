@@ -21,8 +21,8 @@ Console.WriteLine("Creating Worker Service...");
 
 using var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((_, services) =>
-        //services.AddHostedService<WorkerService>()
-        services.AddHostedService<WorkerServiceWithMultiWriters>()
+        services.AddHostedService<WorkerService>()
+        .AddHostedService<WorkerServiceWithMultiWriters>()
             .AddScoped<IMessageWriter, ConsoleMessageWriter>() // Register multiple service instances of the4 same service type.
             .AddScoped<IMessageWriter, LoggingMessageWriter>()
             .AddTransient<ITransientOperation, DefaultOperation>() // Transient operations are always different, a new instance is created with every retrieval of the service.
